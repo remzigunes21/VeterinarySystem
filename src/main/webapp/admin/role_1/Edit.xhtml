@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRole_1Title}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditRole_1Label_roleId}" for="roleId" />
+                    <h:inputText id="roleId" value="#{role_1Controller.selected.roleId}" title="#{bundle.EditRole_1Title_roleId}" required="true" requiredMessage="#{bundle.EditRole_1RequiredMessage_roleId}"/>
+                    <h:outputLabel value="#{bundle.EditRole_1Label_roleName}" for="roleName" />
+                    <h:inputText id="roleName" value="#{role_1Controller.selected.roleName}" title="#{bundle.EditRole_1Title_roleName}" required="true" requiredMessage="#{bundle.EditRole_1RequiredMessage_roleName}"/>
+                    <h:outputLabel value="#{bundle.EditRole_1Label_roleBilgi}" for="roleBilgi" />
+                    <h:inputTextarea rows="4" cols="30" id="roleBilgi" value="#{role_1Controller.selected.roleBilgi}" title="#{bundle.EditRole_1Title_roleBilgi}" required="true" requiredMessage="#{bundle.EditRole_1RequiredMessage_roleBilgi}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{role_1Controller.update}" value="#{bundle.EditRole_1SaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditRole_1ViewLink}"/>
+                <br />
+                <h:commandLink action="#{role_1Controller.prepareList}" value="#{bundle.EditRole_1ShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditRole_1IndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

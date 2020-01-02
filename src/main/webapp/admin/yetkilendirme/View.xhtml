@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewYetkilendirmeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewYetkilendirmeLabel_id}"/>
+                    <h:outputText value="#{yetkilendirmeController.selected.id}" title="#{bundle.ViewYetkilendirmeTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewYetkilendirmeLabel_module}"/>
+                    <h:outputText value="#{yetkilendirmeController.selected.module}" title="#{bundle.ViewYetkilendirmeTitle_module}"/>
+                    <h:outputText value="#{bundle.ViewYetkilendirmeLabel_ekle}"/>
+                    <h:outputText value="#{yetkilendirmeController.selected.ekle}" title="#{bundle.ViewYetkilendirmeTitle_ekle}"/>
+                    <h:outputText value="#{bundle.ViewYetkilendirmeLabel_oku}"/>
+                    <h:outputText value="#{yetkilendirmeController.selected.oku}" title="#{bundle.ViewYetkilendirmeTitle_oku}"/>
+                    <h:outputText value="#{bundle.ViewYetkilendirmeLabel_guncelle}"/>
+                    <h:outputText value="#{yetkilendirmeController.selected.guncelle}" title="#{bundle.ViewYetkilendirmeTitle_guncelle}"/>
+                    <h:outputText value="#{bundle.ViewYetkilendirmeLabel_sil}"/>
+                    <h:outputText value="#{yetkilendirmeController.selected.sil}" title="#{bundle.ViewYetkilendirmeTitle_sil}"/>
+                    <h:outputText value="#{bundle.ViewYetkilendirmeLabel_roleId}"/>
+                    <h:outputText value="#{yetkilendirmeController.selected.roleId}" title="#{bundle.ViewYetkilendirmeTitle_roleId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{yetkilendirmeController.destroyAndView}" value="#{bundle.ViewYetkilendirmeDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewYetkilendirmeEditLink}"/>
+                <br />
+                <h:commandLink action="#{yetkilendirmeController.prepareCreate}" value="#{bundle.ViewYetkilendirmeCreateLink}" />
+                <br />
+                <h:commandLink action="#{yetkilendirmeController.prepareList}" value="#{bundle.ViewYetkilendirmeShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewYetkilendirmeIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

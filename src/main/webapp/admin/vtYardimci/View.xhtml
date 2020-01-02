@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewVtYardimciTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewVtYardimciLabel_vtYrdId}"/>
+                    <h:outputText value="#{vtYardimciController.selected.vtYrdId}" title="#{bundle.ViewVtYardimciTitle_vtYrdId}"/>
+                    <h:outputText value="#{bundle.ViewVtYardimciLabel_yrdAd}"/>
+                    <h:outputText value="#{vtYardimciController.selected.yrdAd}" title="#{bundle.ViewVtYardimciTitle_yrdAd}"/>
+                    <h:outputText value="#{bundle.ViewVtYardimciLabel_yrdSoyad}"/>
+                    <h:outputText value="#{vtYardimciController.selected.yrdSoyad}" title="#{bundle.ViewVtYardimciTitle_yrdSoyad}"/>
+                    <h:outputText value="#{bundle.ViewVtYardimciLabel_tc}"/>
+                    <h:outputText value="#{vtYardimciController.selected.tc}" title="#{bundle.ViewVtYardimciTitle_tc}"/>
+                    <h:outputText value="#{bundle.ViewVtYardimciLabel_dogumTarihi}"/>
+                    <h:outputText value="#{vtYardimciController.selected.dogumTarihi}" title="#{bundle.ViewVtYardimciTitle_dogumTarihi}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewVtYardimciLabel_ÇBasTarih}"/>
+                    <h:outputText value="#{vtYardimciController.selected.ÇBasTarih}" title="#{bundle.ViewVtYardimciTitle_ÇBasTarih}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewVtYardimciLabel_maas}"/>
+                    <h:outputText value="#{vtYardimciController.selected.maas}" title="#{bundle.ViewVtYardimciTitle_maas}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{vtYardimciController.destroyAndView}" value="#{bundle.ViewVtYardimciDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewVtYardimciEditLink}"/>
+                <br />
+                <h:commandLink action="#{vtYardimciController.prepareCreate}" value="#{bundle.ViewVtYardimciCreateLink}" />
+                <br />
+                <h:commandLink action="#{vtYardimciController.prepareList}" value="#{bundle.ViewVtYardimciShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewVtYardimciIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

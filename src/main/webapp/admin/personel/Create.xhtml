@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePersonelTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePersonelLabel_perId}" for="perId" />
+                    <h:inputText id="perId" value="#{personelController.selected.perId}" title="#{bundle.CreatePersonelTitle_perId}" required="true" requiredMessage="#{bundle.CreatePersonelRequiredMessage_perId}"/>
+                    <h:outputLabel value="#{bundle.CreatePersonelLabel_tc}" for="tc" />
+                    <h:inputText id="tc" value="#{personelController.selected.tc}" title="#{bundle.CreatePersonelTitle_tc}" required="true" requiredMessage="#{bundle.CreatePersonelRequiredMessage_tc}"/>
+                    <h:outputLabel value="#{bundle.CreatePersonelLabel_ad}" for="ad" />
+                    <h:inputText id="ad" value="#{personelController.selected.ad}" title="#{bundle.CreatePersonelTitle_ad}" required="true" requiredMessage="#{bundle.CreatePersonelRequiredMessage_ad}"/>
+                    <h:outputLabel value="#{bundle.CreatePersonelLabel_soyad}" for="soyad" />
+                    <h:inputText id="soyad" value="#{personelController.selected.soyad}" title="#{bundle.CreatePersonelTitle_soyad}" required="true" requiredMessage="#{bundle.CreatePersonelRequiredMessage_soyad}"/>
+                    <h:outputLabel value="#{bundle.CreatePersonelLabel_dogumTarihi}" for="dogumTarihi" />
+                    <h:inputText id="dogumTarihi" value="#{personelController.selected.dogumTarihi}" title="#{bundle.CreatePersonelTitle_dogumTarihi}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePersonelLabel_CBasTarihi}" for="CBasTarihi" />
+                    <h:inputText id="CBasTarihi" value="#{personelController.selected.CBasTarihi}" title="#{bundle.CreatePersonelTitle_CBasTarihi}" required="true" requiredMessage="#{bundle.CreatePersonelRequiredMessage_CBasTarihi}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePersonelLabel_maaas}" for="maaas" />
+                    <h:inputText id="maaas" value="#{personelController.selected.maaas}" title="#{bundle.CreatePersonelTitle_maaas}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{personelController.create}" value="#{bundle.CreatePersonelSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{personelController.prepareList}" value="#{bundle.CreatePersonelShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePersonelIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditVtYardimciTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditVtYardimciLabel_vtYrdId}" for="vtYrdId" />
+                    <h:inputText id="vtYrdId" value="#{vtYardimciController.selected.vtYrdId}" title="#{bundle.EditVtYardimciTitle_vtYrdId}" required="true" requiredMessage="#{bundle.EditVtYardimciRequiredMessage_vtYrdId}"/>
+                    <h:outputLabel value="#{bundle.EditVtYardimciLabel_yrdAd}" for="yrdAd" />
+                    <h:inputText id="yrdAd" value="#{vtYardimciController.selected.yrdAd}" title="#{bundle.EditVtYardimciTitle_yrdAd}" required="true" requiredMessage="#{bundle.EditVtYardimciRequiredMessage_yrdAd}"/>
+                    <h:outputLabel value="#{bundle.EditVtYardimciLabel_yrdSoyad}" for="yrdSoyad" />
+                    <h:inputText id="yrdSoyad" value="#{vtYardimciController.selected.yrdSoyad}" title="#{bundle.EditVtYardimciTitle_yrdSoyad}" required="true" requiredMessage="#{bundle.EditVtYardimciRequiredMessage_yrdSoyad}"/>
+                    <h:outputLabel value="#{bundle.EditVtYardimciLabel_tc}" for="tc" />
+                    <h:inputText id="tc" value="#{vtYardimciController.selected.tc}" title="#{bundle.EditVtYardimciTitle_tc}" />
+                    <h:outputLabel value="#{bundle.EditVtYardimciLabel_dogumTarihi}" for="dogumTarihi" />
+                    <h:inputText id="dogumTarihi" value="#{vtYardimciController.selected.dogumTarihi}" title="#{bundle.EditVtYardimciTitle_dogumTarihi}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditVtYardimciLabel_ÇBasTarih}" for="ÇBasTarih" />
+                    <h:inputText id="ÇBasTarih" value="#{vtYardimciController.selected.ÇBasTarih}" title="#{bundle.EditVtYardimciTitle_ÇBasTarih}" required="true" requiredMessage="#{bundle.EditVtYardimciRequiredMessage_ÇBasTarih}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditVtYardimciLabel_maas}" for="maas" />
+                    <h:inputText id="maas" value="#{vtYardimciController.selected.maas}" title="#{bundle.EditVtYardimciTitle_maas}" required="true" requiredMessage="#{bundle.EditVtYardimciRequiredMessage_maas}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{vtYardimciController.update}" value="#{bundle.EditVtYardimciSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditVtYardimciViewLink}"/>
+                <br />
+                <h:commandLink action="#{vtYardimciController.prepareList}" value="#{bundle.EditVtYardimciShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditVtYardimciIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

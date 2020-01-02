@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRole_1Title}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRole_1Label_roleId}"/>
+                    <h:outputText value="#{role_1Controller.selected.roleId}" title="#{bundle.ViewRole_1Title_roleId}"/>
+                    <h:outputText value="#{bundle.ViewRole_1Label_roleName}"/>
+                    <h:outputText value="#{role_1Controller.selected.roleName}" title="#{bundle.ViewRole_1Title_roleName}"/>
+                    <h:outputText value="#{bundle.ViewRole_1Label_roleBilgi}"/>
+                    <h:outputText value="#{role_1Controller.selected.roleBilgi}" title="#{bundle.ViewRole_1Title_roleBilgi}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{role_1Controller.destroyAndView}" value="#{bundle.ViewRole_1DestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRole_1EditLink}"/>
+                <br />
+                <h:commandLink action="#{role_1Controller.prepareCreate}" value="#{bundle.ViewRole_1CreateLink}" />
+                <br />
+                <h:commandLink action="#{role_1Controller.prepareList}" value="#{bundle.ViewRole_1ShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRole_1IndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

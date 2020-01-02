@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListVtYardimciTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListVtYardimciEmpty}" rendered="#{vtYardimciController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{vtYardimciController.items.rowCount > 0}">
+                    <h:outputText value="#{vtYardimciController.pagination.pageFirstItem + 1}..#{vtYardimciController.pagination.pageLastItem + 1}/#{vtYardimciController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{vtYardimciController.previous}" value="#{bundle.Previous} #{vtYardimciController.pagination.pageSize}" rendered="#{vtYardimciController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{vtYardimciController.next}" value="#{bundle.Next} #{vtYardimciController.pagination.pageSize}" rendered="#{vtYardimciController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{vtYardimciController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVtYardimciTitle_vtYrdId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vtYrdId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVtYardimciTitle_yrdAd}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.yrdAd}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVtYardimciTitle_yrdSoyad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.yrdSoyad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVtYardimciTitle_tc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tc}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVtYardimciTitle_dogumTarihi}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dogumTarihi}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVtYardimciTitle_ÇBasTarih}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ÇBasTarih}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListVtYardimciTitle_maas}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.maas}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{vtYardimciController.prepareView}" value="#{bundle.ListVtYardimciViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{vtYardimciController.prepareEdit}" value="#{bundle.ListVtYardimciEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{vtYardimciController.destroy}" value="#{bundle.ListVtYardimciDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{vtYardimciController.prepareCreate}" value="#{bundle.ListVtYardimciCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListVtYardimciIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

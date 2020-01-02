@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPersonelTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPersonelLabel_perId}"/>
+                    <h:outputText value="#{personelController.selected.perId}" title="#{bundle.ViewPersonelTitle_perId}"/>
+                    <h:outputText value="#{bundle.ViewPersonelLabel_tc}"/>
+                    <h:outputText value="#{personelController.selected.tc}" title="#{bundle.ViewPersonelTitle_tc}"/>
+                    <h:outputText value="#{bundle.ViewPersonelLabel_ad}"/>
+                    <h:outputText value="#{personelController.selected.ad}" title="#{bundle.ViewPersonelTitle_ad}"/>
+                    <h:outputText value="#{bundle.ViewPersonelLabel_soyad}"/>
+                    <h:outputText value="#{personelController.selected.soyad}" title="#{bundle.ViewPersonelTitle_soyad}"/>
+                    <h:outputText value="#{bundle.ViewPersonelLabel_dogumTarihi}"/>
+                    <h:outputText value="#{personelController.selected.dogumTarihi}" title="#{bundle.ViewPersonelTitle_dogumTarihi}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPersonelLabel_CBasTarihi}"/>
+                    <h:outputText value="#{personelController.selected.CBasTarihi}" title="#{bundle.ViewPersonelTitle_CBasTarihi}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPersonelLabel_maaas}"/>
+                    <h:outputText value="#{personelController.selected.maaas}" title="#{bundle.ViewPersonelTitle_maaas}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{personelController.destroyAndView}" value="#{bundle.ViewPersonelDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPersonelEditLink}"/>
+                <br />
+                <h:commandLink action="#{personelController.prepareCreate}" value="#{bundle.ViewPersonelCreateLink}" />
+                <br />
+                <h:commandLink action="#{personelController.prepareList}" value="#{bundle.ViewPersonelShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPersonelIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

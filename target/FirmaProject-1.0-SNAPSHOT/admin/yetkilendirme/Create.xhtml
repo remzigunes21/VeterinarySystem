@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateYetkilendirmeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateYetkilendirmeLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{yetkilendirmeController.selected.id}" title="#{bundle.CreateYetkilendirmeTitle_id}" required="true" requiredMessage="#{bundle.CreateYetkilendirmeRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateYetkilendirmeLabel_module}" for="module" />
+                    <h:inputText id="module" value="#{yetkilendirmeController.selected.module}" title="#{bundle.CreateYetkilendirmeTitle_module}" required="true" requiredMessage="#{bundle.CreateYetkilendirmeRequiredMessage_module}"/>
+                    <h:outputLabel value="#{bundle.CreateYetkilendirmeLabel_ekle}" for="ekle" />
+                    <h:inputText id="ekle" value="#{yetkilendirmeController.selected.ekle}" title="#{bundle.CreateYetkilendirmeTitle_ekle}" required="true" requiredMessage="#{bundle.CreateYetkilendirmeRequiredMessage_ekle}"/>
+                    <h:outputLabel value="#{bundle.CreateYetkilendirmeLabel_oku}" for="oku" />
+                    <h:inputText id="oku" value="#{yetkilendirmeController.selected.oku}" title="#{bundle.CreateYetkilendirmeTitle_oku}" required="true" requiredMessage="#{bundle.CreateYetkilendirmeRequiredMessage_oku}"/>
+                    <h:outputLabel value="#{bundle.CreateYetkilendirmeLabel_guncelle}" for="guncelle" />
+                    <h:inputText id="guncelle" value="#{yetkilendirmeController.selected.guncelle}" title="#{bundle.CreateYetkilendirmeTitle_guncelle}" required="true" requiredMessage="#{bundle.CreateYetkilendirmeRequiredMessage_guncelle}"/>
+                    <h:outputLabel value="#{bundle.CreateYetkilendirmeLabel_sil}" for="sil" />
+                    <h:inputText id="sil" value="#{yetkilendirmeController.selected.sil}" title="#{bundle.CreateYetkilendirmeTitle_sil}" required="true" requiredMessage="#{bundle.CreateYetkilendirmeRequiredMessage_sil}"/>
+                    <h:outputLabel value="#{bundle.CreateYetkilendirmeLabel_roleId}" for="roleId" />
+                    <h:selectOneMenu id="roleId" value="#{yetkilendirmeController.selected.roleId}" title="#{bundle.CreateYetkilendirmeTitle_roleId}" required="true" requiredMessage="#{bundle.CreateYetkilendirmeRequiredMessage_roleId}">
+                        <f:selectItems value="#{role_1Controller.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{yetkilendirmeController.create}" value="#{bundle.CreateYetkilendirmeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{yetkilendirmeController.prepareList}" value="#{bundle.CreateYetkilendirmeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateYetkilendirmeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
